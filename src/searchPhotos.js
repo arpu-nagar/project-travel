@@ -75,11 +75,12 @@ export default function SearchPhotos() {
 				{/* {yt.load ? ( */}
 				{/* <YouTube videoId={yt.id} opts={opts} onReady={_onReady} /> */}
 				<ReactPlayer
+					playsInline
 					url={yt.url}
-					playsinline={true}
+					playsInline={true}
 					playing={true}
-					height="0px"
-					width="0px"
+					height="0"
+					width="0"
 				/>
 				{/* // ) : null} */}
 			</form>

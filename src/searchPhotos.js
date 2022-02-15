@@ -5,7 +5,7 @@ import ReactPlayer from 'react-player/lazy';
 import axios from 'axios';
 
 const unsplash = new Unsplash({
-	accessKey: 'dcO2Wt8pFYFrf9Cr3Q2Yj2IPdnSs2gwtjz6N1ONLnGc',
+	accessKey: process.env.REACT_APP_ACCESS_KEY,
 });
 
 const opts = {
@@ -42,7 +42,7 @@ export default function SearchPhotos() {
 			.then(async (json) => {
 				// console.log(json);
 				setPics(json.results);
-				const url = `https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=20&q=${query}%20song&type=video&key=AIzaSyAo3MaZpnMQ8lIio4RGglWGg3uH1Kk1IVw`;
+				const url = `https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=20&q=${query}%20song&type=video&key=${process.env.REACT_APP_YT}`;
 				const load = await axios.get(url);
 				console.log(load.data.items[0].id.videoId);
 				setYT({
@@ -75,7 +75,6 @@ export default function SearchPhotos() {
 				{/* {yt.load ? ( */}
 				{/* <YouTube videoId={yt.id} opts={opts} onReady={_onReady} /> */}
 				<ReactPlayer
-					playsInline
 					url={yt.url}
 					playsInline={true}
 					playing={true}
